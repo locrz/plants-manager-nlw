@@ -1,6 +1,22 @@
 import React from "react";
-import { Welcome } from "./src/screens/Welcome";
+import AppSplashScreen from "expo-app-loading";
+import {
+  useFonts,
+  Jost_400Regular,
+  Jost_600SemiBold,
+} from "@expo-google-fonts/jost";
+
+import Routes from "./src/routes";
 
 export default function App() {
-  return <Welcome />;
+  const [isFontsLoaded] = useFonts({
+    Jost_400Regular,
+    Jost_600SemiBold,
+  });
+
+  if (!isFontsLoaded) {
+    return <AppSplashScreen />;
+  }
+
+  return <Routes />;
 }
